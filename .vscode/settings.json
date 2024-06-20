@@ -1,0 +1,14 @@
+{
+  "typescript.tsdk": "node_modules\\typescript\\lib",
+  "typescript.enablePromptUseWorkspaceTsdk": true,
+  "cSpell.words": [
+    "btcprice",
+    "cbrcs",
+    "createinscriptions",
+    "FREN",
+    "marketcap",
+    "reinscriptions",
+    "sats",
+    "UTXO"
+  ]
+}

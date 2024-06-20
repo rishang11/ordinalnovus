@@ -1,0 +1,53 @@
+name: Ordinalnovus CI
+
+on:
+  push:
+    branches:
+      - main
+      - dev
+      - testnet
+
+jobs:
+  build-and-push-ordinalnovus:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Determine build environment
+        id: set-env
+        run: |
+          if [ "${{ github.ref }}" == "refs/heads/main" ]; then
+            echo "NEXT_PUBLIC_URL=https://ordinalnovus.com" >> $GITHUB_ENV
+            echo "TAG_NAME=latest" >> $GITHUB_ENV
+            echo "NEXT_PUBLIC_NETWORK=mainnet" >> $GITHUB_ENV
+          elif [ "${{ github.ref }}" == "refs/heads/dev" ]; then
+            echo "NEXT_PUBLIC_URL=https://dev.ordinalnovus.com" >> $GITHUB_ENV
+            echo "TAG_NAME=dev" >> $GITHUB_ENV
+            echo "NEXT_PUBLIC_NETWORK=mainnet" >> $GITHUB_ENV
+          elif [ "${{ github.ref }}" == "refs/heads/testnet" ]; then
+            echo "NEXT_PUBLIC_URL=https://testnet.ordinalnovus.com" >> $GITHUB_ENV
+            echo "TAG_NAME=testnet" >> $GITHUB_ENV
+            echo "NEXT_PUBLIC_NETWORK=testnet" >> $GITHUB_ENV
+            
+          fi
+          echo "MONGODB_STRING=mongodb://192.168.1.33:27017/ordinalnovus_dev" >> $GITHUB_ENV
+
+      - name: Build Ordinalnovus image
+        run: |
+          docker build -t crypticmetadev/ordinalnovus:${{ env.TAG_NAME }} . \
+            --build-arg MONGODB_URI=${{ env.MONGODB_STRING }} \
+            --build-arg NEXT_PUBLIC_URL=${{ env.NEXT_PUBLIC_URL }} \
+            --build-arg NEXT_PUBLIC_NETWORK=${{ env.NEXT_PUBLIC_NETWORK }} \
+            --build-arg NEXT_PUBLIC_PROVIDER=https://ord.ordinalnovus.com \
+            --build-arg NEXT_PUBLIC_CBRC_API=${{secrets.NEXT_PUBLIC_CBRC_API}}
+
+      - name: Log in to Docker registry
+        uses: docker/login-action@v1
+        with:
+          username: crypticmetadev
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Push ordinalnovus image to Docker registry
+        run: docker push crypticmetadev/ordinalnovus:${{ env.TAG_NAME }}

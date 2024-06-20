@@ -1,0 +1,408 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Facebook Sans */
+@font-face {
+  font-family: "Facebook Sans";
+  font-style: normal;
+  font-weight: 400;
+  src: url("/static-assets/fonts/FacebookSans/FacebookSansRegular.ttf")
+    format("truetype");
+}
+
+@font-face {
+  font-family: "Facebook Sans";
+  font-style: normal;
+  font-weight: 700;
+  src: url("/static-assets/fonts/FacebookSans/FacebookSansBold.ttf")
+    format("truetype");
+}
+
+@font-face {
+  font-family: "Facebook Sans";
+  font-style: normal;
+  font-weight: 900;
+  src: url("/static-assets/fonts/FacebookSans/FacebookSansHeavy.ttf")
+    format("truetype");
+}
+
+.slick-track {
+  margin-left: 0 !important;
+}
+
+/* For setting gap of 8px between the slides in slider  */
+.slick-slide {
+  padding: 0 8px !important;
+}
+.slick-list {
+  margin: 0 -8px !important;
+}
+
+/* custom dot in slider */
+
+.slick-dots.slick-thumb {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.slick-dots.slick-thumb li {
+  width: 8px;
+  height: 8px;
+  margin: 0 3px;
+  border-radius: 999px;
+  transition: all 0.5s ease-in-out;
+  will-change: width;
+  background-color: #a6a6a6;
+}
+
+.slick-dots.slick-thumb li.slick-active {
+  background-color: #9102f0;
+  width: 24px;
+}
+
+/* --------------- */
+
+/* Center alignment utility class */
+.center {
+  @apply flex justify-center items-center;
+}
+
+/* Line separator utility class */
+.line {
+  @apply my-2 border-accent;
+}
+
+/* Modal heading styles */
+.modalHeading {
+  @apply text-xl capitalize font-bold text-center;
+}
+
+/* CSS animation for glowing effect */
+@keyframes glow {
+  0%,
+  100% {
+    box-shadow: 0 0 5px #ff0000, 0 0 10px #ff0000, 0 0 20px #ff0000,
+      0 0 30px #ff0000;
+  }
+  50% {
+    box-shadow: 0 0 10px #ff0000, 0 0 20px #ff0000, 0 0 40px #ff0000,
+      0 0 60px #ff0000;
+  }
+}
+
+/* Glowing effect utility class */
+.animate-glow {
+  animation: glow 2s ease-in-out infinite;
+}
+
+/* Custom scrollbar styles */
+/* Width */
+.small-scrollbar::-webkit-scrollbar {
+  width: 8px;
+}
+
+/* Track */
+.small-scrollbar::-webkit-scrollbar-track {
+  background-color: rgb(73, 61, 48);
+}
+
+/* Handle */
+.small-scrollbar::-webkit-scrollbar-thumb {
+  background-color: #9102f0;
+}
+
+/* Handle on hover */
+.small-scrollbar::-webkit-scrollbar-thumb:hover {
+  background-color: rgb(201, 107, 7);
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.no-scrollbar {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+/* Styles for iframe elements that shouldn't be scrollable */
+.no-scroll-iframe {
+  overflow: hidden !important;
+  width: 100% !important;
+  height: 100% !important;
+  border: none !important;
+}
+
+/* Styles for the 404 page icon */
+.four-o-four {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  width: 75%;
+}
+
+/* custom card */
+
+.card_div {
+  transition: all 0.3s ease-in-out;
+}
+.card_div:hover .detail-div {
+  display: none;
+}
+
+.MuiTableRow-head {
+  border-top: 1px solid rgba(145, 2, 240, 0.5) !important; /* Apply border to the top */
+  border-bottom: 1px solid rgba(145, 2, 240, 0.5) !important; /* Apply border to the bottom */
+}
+
+.MuiTableCell-root {
+  border-top: 1px solid rgba(145, 2, 240, 0.5) !important; /* Apply border to the top */
+  border-bottom: 1px solid rgba(145, 2, 240, 0.5) !important; /* Apply border to the bottom */
+}
+
+.cbrc-sales .MuiTableCell-head {
+  border-top: 1px solid rgba(145, 2, 240, 0.5) !important;
+  border-bottom: 1px solid rgba(145, 2, 240, 0.5) !important;
+  padding-top: 15px !important;
+  padding-bottom: 15px !important;
+}
+.cbrc-sales .MuiTableCell-body {
+  padding-top: 15px !important;
+  padding-bottom: 15px !important;
+}
+
+.pixelated {
+  image-rendering: pixelated;
+}
+
+/* Button Transition Style */
+
+.styled-button-wrapper button {
+  position: relative;
+  z-index: 1;
+  cursor: pointer;
+  transition: 0.08s ease-in;
+  -o-transition: 0.08s ease-in;
+  -ms-transition: 0.08s ease-in;
+  -moz-transition: 0.08s ease-in;
+  -webkit-transition: 0.08s ease-in;
+}
+
+.accent_transition {
+  -webkit-transition: all 150ms cubic-bezier(0.445, 0.05, 0.55, 0.95);
+}
+
+.accent_transition:before {
+  position: absolute;
+  content: "";
+  background: url(https://f.cl.ly/items/3H3A0D1N281a2T280F3o/heist.svg)
+    no-repeat center center;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  opacity: 0;
+  -webkit-transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.accent_transition:after {
+  content: "";
+  position: absolute;
+  background: #9102f0;
+  bottom: 0;
+  left: 0;
+  right: 100%;
+  top: 0;
+  z-index: -2;
+  -webkit-transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+}
+.accent_transition:hover {
+  color: white;
+  border: 0px #9102f0 solid;
+}
+.accent_transition:hover:before {
+  opacity: 0.8;
+}
+.accent_transition:hover:after {
+  right: 0;
+}
+
+/* Red Transition  */
+
+.red_transition {
+  -webkit-transition: all 150ms cubic-bezier(0.445, 0.05, 0.55, 0.95);
+}
+
+.red_transition:before {
+  position: absolute;
+  content: "";
+  background: url(https://f.cl.ly/items/3H3A0D1N281a2T280F3o/heist.svg)
+    no-repeat center center;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  opacity: 0;
+  -webkit-transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.red_transition:after {
+  content: "";
+  position: absolute;
+  background: #db4242;
+  bottom: 0;
+  left: 0;
+  right: 100%;
+  top: 0;
+  z-index: -2;
+  -webkit-transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+}
+.red_transition:hover {
+  color: white;
+  border: 0px #db4242 solid;
+}
+.red_transition:hover:before {
+  opacity: 0.8;
+}
+.red_transition:hover:after {
+  right: 0;
+}
+
+/* Violet dark transition */
+
+.violet_dark_transition {
+  -webkit-transition: all 150ms cubic-bezier(0.445, 0.05, 0.55, 0.95);
+}
+
+.violet_dark_transition:before {
+  position: absolute;
+  content: "";
+  background: url(https://f.cl.ly/items/3H3A0D1N281a2T280F3o/heist.svg)
+    no-repeat center center;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  opacity: 0;
+  -webkit-transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.violet_dark_transition:after {
+  content: "";
+  position: absolute;
+  background: #16072f;
+  bottom: 0;
+  left: 0;
+  right: 100%;
+  top: 0;
+  z-index: -2;
+  -webkit-transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+}
+.violet_dark_transition:hover {
+  color: white;
+  border: 0px #16072f solid;
+}
+.violet_dark_transition:hover:before {
+  opacity: 0.8;
+}
+.violet_dark_transition:hover:after {
+  right: 0;
+}
+
+/* BrightButton CSS */
+/* relevant portion */
+.BrightButton {
+  --border-radius: 10px;
+  --border-width: 2px;
+
+  appearance: none;
+  position: relative;
+
+  border: 0;
+  background-color: transparent;
+  font-family: "Montserrat", sans-serif;
+  /* font-size: 2em; */
+  font-weight: 600;
+  color: #fff;
+}
+
+.BrightButton::after {
+  --m-i: linear-gradient(#000, #000);
+  --m-o: content-box, padding-box;
+
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  padding: var(--border-width);
+  border-radius: var(--border-radius);
+  background-image: conic-gradient(
+    #488cfb,
+    #29dbbc,
+    #ddf505,
+    #ff9f0e,
+    #e440bb,
+    #655adc,
+    #488cfb
+  );
+
+  mask-image: var(--m-i), var(--m-i);
+  mask-origin: var(--m-o);
+  mask-clip: var(--m-o);
+  mask-composite: exclude;
+  -webkit-mask-composite: destination-out;
+
+  filter: hue-rotate(0);
+  animation: hue linear 500ms infinite;
+  animation-play-state: paused;
+}
+
+.BrightButton:hover::after {
+  animation-play-state: running;
+}
+
+@keyframes hue {
+  to {
+    filter: hue-rotate(1turn);
+  }
+}
+
+/* Fill Div Style */
+.fill {
+  /* font-size: 20px; */
+  /* font-weight: 200; */
+  /* letter-spacing: 1px; */
+  padding: 13px 50px 13px;
+  outline: 0;
+  /* border: 1px solid black; */
+  cursor: pointer;
+  position: relative;
+  background-color: rgba(0, 0, 0, 0);
+}
+
+.fill::after {
+  content: "";
+  /* background-color: #ffe54c; */
+  width: 100%;
+  z-index: -1;
+  position: absolute;
+  height: 100%;
+  top: 7px;
+  left: 7px;
+  transition: 0.2s;
+}
+
+.fill:hover::after {
+  top: 0px;
+  left: 0px;
+}
