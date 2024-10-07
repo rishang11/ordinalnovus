@@ -4,7 +4,7 @@ import Redis, { Callback, RedisKey } from "ioredis";
 const redis = new Redis({
   // Redis connection options go here
   host: process.env.REDIS_URL,
-  port: 6379,
+  port: 6380,
 });
 
 // const getKeysAndValuesByPattern = async (pattern: string): Promise<void> => {
